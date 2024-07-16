@@ -2,6 +2,8 @@
     <nav>
         <router-link to="/login" v-if="!isLoggedIn">Login</router-link> |
         <router-link to="/register" v-if="!isLoggedIn">Register</router-link>
+        <router-link to="/list-product" v-if="isLoggedIn">List Product</router-link> |
+        <router-link to="/add-product" v-if="isLoggedIn">Add Product</router-link> |
         <a href="#" @click="logout" v-if="isLoggedIn">Logout</a>
     </nav>
 </template>

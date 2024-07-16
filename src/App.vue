@@ -1,8 +1,10 @@
 <template>
+  <div id="app">
     <NavbarVue/>
-    <div id="app">
-        <router-view/>
+    <div id="content">
+      <router-view/>
     </div>
+  </div>
 </template>
 
 <script>
@@ -14,13 +16,22 @@ export default {
   name: 'App',
 }
 </script>
+
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+
+#content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
 }
 </style>

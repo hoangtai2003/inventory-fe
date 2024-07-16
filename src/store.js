@@ -1,6 +1,5 @@
 import { createStore } from "vuex";
 import router from './router';
-import instance from "./axios";
 export default createStore({
     // state là nơi lưu trữ trạng thái của ứng dụng
     state: {
@@ -23,6 +22,7 @@ export default createStore({
             commit("LOGIN")
         },
         logout({ commit }) {
+            localStorage.removeItem('token');
             commit("LOGOUT");
             router.push({ name: 'Login' });
         }
