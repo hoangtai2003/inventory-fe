@@ -1,8 +1,8 @@
 <template>
     <form @submit.prevent="submitForm" class="add-product-form">
-        <input class="input-field" v-model="form.name" placeholder="Product Name...." />
-        <input class="input-field" v-model="form.description" placeholder="Product Description...." />
-        <input class="input-field" v-model="form.price" placeholder="Product Price...." />
+        <input v-model="form.name" placeholder="Product Name...." />
+        <input v-model="form.description" placeholder="Product Description...." />
+        <input v-model="form.price" placeholder="Product Price...." />
         <button type="submit" class="submit-button">Edit Product</button>
     </form>
 </template>
@@ -28,7 +28,7 @@ const getProduct = async () => {
 
 const submitForm = async () => {
     await instance.put(`/products/update/${route.params.id}`, form.value);
-    router.push('/list-product');
+    router.push('/admin/list-product');
 };
 
 onMounted(() => {

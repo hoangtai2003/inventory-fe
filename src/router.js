@@ -6,6 +6,7 @@ import ProductList from "./components/ProductList.vue";
 import AddProduct from "./components/AddProduct.vue";
 import EditProduct from "./components/EditProduct.vue";
 import ProductDetails from "./components/ProductDetails.vue";
+import Dashboard from "./components/admin/Dashboard.vue";
 const routes = [
     {
         path: '/login',
@@ -20,26 +21,28 @@ const routes = [
         meta: {public : true} // Cho phép tuyến đường công khai
     },
     {
-        path: '/list-product',
-        name: 'ProductList',
-        component: ProductList,
-    },
-    {
-        path: '/add-product',
-        name: 'AddProduct',
-        component: AddProduct,
-    },
-    {
-        path: '/edit-product/:id',
-        name: 'EditProduct',
-        component: EditProduct,
-        props: true
-    },
-    {
-        path: '/detail-product/:id',
-        name: 'DetailProduct',
-        component: ProductDetails,
-        props: true
+        path: '/admin',
+        component: Dashboard,
+        children: [
+            {
+                path: 'list-product',
+                component: ProductList
+            },
+            {
+                path: 'add-product',
+                component: AddProduct
+            },
+            {
+                path: 'edit-product/:id',
+                name: 'EditProduct',
+                component: EditProduct
+            },
+            {
+                path: 'detail-product/:id',
+                name: 'DetailProduct',
+                component: ProductDetails
+            }
+        ]
     }
 ];
 const router = createRouter({
