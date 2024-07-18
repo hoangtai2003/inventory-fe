@@ -1,17 +1,45 @@
 <template>
-    <div class="login-container">
-        <h1>Login</h1>
-        <form @submit.prevent="login">
-            <div class="input-group">
-                <label for="email">Email</label>
-                <input type="text" id="email" v-model="form.email"  required>
+    <div class="container">
+        <div class="forms-container">
+            <div class="signin-signup">
+                <form @submit.prevent="login" class="sign-in-form">
+                    <h2 class="form-title">Đăng nhập</h2>
+                    <div class="input-field">
+                        <i class="fas fa-user"></i>
+                        <input type="text" placeholder="Email" required v-model="form.email"/>
+                    </div>
+                    <div class="input-field">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" placeholder="Password" required v-model="form.password"/>
+                    </div>
+                    <button type="submit" class="button solid">Đăng nhập</button>
+                    <p class="question">Chưa có tài khoản?<router-link to="/register"> Đăng ký</router-link></p>
+                    <p class="social-text">Or</p>
+                    <div class="social-media">
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-google"></i>
+                        </a>
+                        <a href="#" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </form>
             </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" v-model="form.password" required>
+        </div>
+
+        <div class="panels-container">
+            <div class="panel left-panel">
+                <div class="content">
+                </div>
+                <img src="../assets/img/log.svg" class="image" alt="" />
             </div>
-            <button type="submit">Login</button>
-        </form>
+        </div>
     </div>
 </template>
 <script setup>
@@ -36,7 +64,7 @@ const login = async () => {
         }
         store.dispatch('login')
         // Chuyển hướng đến trang chính
-        router.push('/')
+        router.push('/admin')
         
     } catch (error) {
         console.error("An error occurred: ", error);
@@ -47,77 +75,5 @@ const login = async () => {
 };
 </script>
 <style scoped>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
-
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(135deg, #ff7e5f, #feb47b);
-    margin: 0;
-}
-
-.login-container {
-    background: #fff;
-    padding: 40px 60px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    width: 100%;
-    max-width: 400px;
-}
-
-.login-container h1 {
-    margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
-}
-
-.input-group {
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
-    color: #555;
-}
-
-.input-group input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.input-group input:focus {
-    border-color: #ff7e5f;
-    outline: none;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background: #ff7e5f;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-button:hover {
-    background: #feb47b;
-}
-
+@import '../assets/css/auth.css';
 </style>
-
